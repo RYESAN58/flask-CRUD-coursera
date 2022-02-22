@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>{{ current_title }}</h1>
+        <h3>SubHeader something something</h3>
+        <hr>
+        <ul>
+            <li><a href="http://127.0.0.1:5000/">Home Page</a></li>
+            <li><a href="http://127.0.0.1:5000/about">About Page</a></li>
+        </ul>
+
+        {% block main %}
+        {% endblock main%}
+        <ul>
+            {% for i in tasks %}
+                <li>{{i.title}} created on {{ i.date }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

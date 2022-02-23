@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>{{ current_title }}</h1>
-        <h3>SubHeader something something</h3>
-        <hr>
-        <ul>
-            <li><a href="http://127.0.0.1:5000/">Home Page</a></li>
-            <li><a href="http://127.0.0.1:5000/about">About Page</a></li>
-        </ul>
+{% extends "base.html" %}
 
-        {% block main %}
-        {% endblock main%}
-        <ul>
-            {% for i in tasks %}
-                <li>{{i.title}} created on {{ i.date }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block main %}
+    {% for task in tasks %}
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ task.title }}</h3>
+                <p>Added on {{ task.date }}</p>
+                <a href="{{ url_for('edit', task_id=task.id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('delete', task_id=task.id) }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
